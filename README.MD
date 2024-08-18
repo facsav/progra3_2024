@@ -12,4 +12,7 @@ some code
     - git status
     - git add .
     - git add ${path/to/file}
+    - git commit -m 'some messsage'
+    - git checkout -b ${branch-name}
+    - git push origin ${branch-name}
 ```
