@@ -24,3 +24,4 @@ public class actividad1_3 {
         System.out.println("El resultado de sumar los primeros " + cantidadNumeros + " numeros enteros es: " + resultado);
     }
 }
+//test
