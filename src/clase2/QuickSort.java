@@ -1,4 +1,4 @@
-package clase3;
+package clase2;
 import java.util.Arrays;
 import java.util.Random;
 public class QuickSort {
