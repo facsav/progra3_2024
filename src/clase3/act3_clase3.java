@@ -22,26 +22,40 @@ public class act3_clase3 {
         }
     }
 
-    public static Cliente retornasDosClienteConMaximoScoring(List<Cliente> clientes){
+    public static List<Cliente> retornarDosClienteConMaximoScoring(List<Cliente> clientes){
         if(clientes.size() < 2){
             System.out.println("La lista contiene menos de dos elementos");
             return null;
         }
-        return retornasDosClienteConMaximoScoringRecursivo(clientes, 0, clientes.size() -1);
+        return retornarDosClienteConMaximoScoringRecursivo(clientes, 0, clientes.size() -1);
     }
 
-    private static Cliente retornasDosClienteConMaximoScoringRecursivo(List<Cliente> clientes, int bajo, int alto){
+    private static List<Cliente> retornarDosClienteConMaximoScoringRecursivo(List<Cliente> clientes, int bajo, int alto){
         if (bajo == alto) {
-            return clientes.get(bajo);
+            List<Cliente> resultado = new ArrayList<>();
+            resultado.add(clientes.get(bajo));
+            return resultado;
         }
 
         int medio = (bajo + alto) / 2;
 
-        Cliente maxIzquierda = retornasDosClienteConMaximoScoringRecursivo(clientes, bajo, medio);
-        Cliente maxDerecha = retornasDosClienteConMaximoScoringRecursivo(clientes, medio + 1, alto);
+        List<Cliente> maxIzquierda = retornarDosClienteConMaximoScoringRecursivo(clientes, bajo, medio);
+        List<Cliente> maxDerecha = retornarDosClienteConMaximoScoringRecursivo(clientes, medio + 1, alto);
 
-        return maxIzquierda.scoring > maxDerecha.scoring ? maxIzquierda : maxDerecha;
+        return combinarDosListas(maxIzquierda, maxDerecha);
     } 
+
+    private static List<Cliente> combinarDosListas(List<Cliente> lista1, List<Cliente> lista2){
+        List<Cliente> combinados = new ArrayList<>();
+        combinados.addAll(lista1);
+        combinados.addAll(lista2);
+
+        combinados.sort((c1, c2) -> c2.scoring - c1.scoring);
+
+        // Retornar los dos primeros elementos (los de mayor scoring)
+        return combinados.subList(0, 2);
+    }
+
 
     public static List<Cliente> llenarClientes(List<Cliente> clientes){
         String[] nombresParte1 = {"Ari", "Bel", "Car", "Dav", "Eva", "Fla", "Gil", "Hes", "Iza", "Jen"};
@@ -61,15 +75,21 @@ public class act3_clase3 {
 
     
     public static void main(String[] args) {
-                List<Cliente> clientes = new ArrayList<>();
+        List<Cliente> clientes = new ArrayList<>();
         clientes = llenarClientes(clientes);
         for(Cliente cliente : clientes){
             System.out.println(cliente);
         }
-        Cliente maxCliente = retornasDosClienteConMaximoScoring(clientes);
-        if (maxCliente != null) {
-            System.out.println("Cliente con máximo scoring:");
-            System.out.println(maxCliente); // Utiliza el método toString() implícitamente
+        List<Cliente> maximosClientes = retornarDosClienteConMaximoScoring(clientes);
+
+        if (maximosClientes != null) {
+            System.out.println("Los dos clientes con máximo scoring son:");
+            for(Cliente cliente : maximosClientes){
+                System.out.println(cliente);
+            }
         }
     }
 }
+/*
+ * La complejidad temporal del metodo es O(n log n)
+ */
