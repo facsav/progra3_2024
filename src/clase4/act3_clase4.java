@@ -2,6 +2,7 @@ package clase4;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /*
@@ -43,19 +44,24 @@ public class act3_clase4 {
         int pesoTotal = 0;
         double valorTotal = 0;
 
-        Arrays.sort(elementos, (e1, e2) -> Double.compare((double) e2.valor / e2.peso, (double) e1.valor / e1.peso));
+        Arrays.sort(elementos, new Comparator<Elemento>() {
+            @Override
+            public int compare(Elemento e1, Elemento e2) {
+                return Integer.compare(e1.valor, e2.valor);
+            }
+        });
         for (Elemento elemento : elementos) {
-            if (pesoTotal + elemento.peso <= camion.capacidad) {
+            if (valorTotal + elemento.valor <= camion.capacidad) {
                 resultado.add(elemento.toString());
                 pesoTotal += elemento.peso;
                 valorTotal += elemento.valor;
-            } else {
-                int pesoRestante = camion.capacidad - pesoTotal;
+            }/*  else {
+                int valorRestante = camion.capacidad - valorTotal;
                 double fraccion = (double) pesoRestante / elemento.peso;
                 resultado.add(elemento.descripcion + " (Peso: " + pesoRestante + ", Valor: " + (elemento.valor * fraccion) + ")");
                 valorTotal += elemento.valor * fraccion;
                 break;
-            }
+            }*/
         }
 
         System.out.println("Valor total cargado: " + valorTotal);
