@@ -4,7 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class act1_clase4 {
-    // Función para encontrar la cantidad mínima de monedas
+    /*
+     * Dada una lista de monedas con denominaciones convencionales (1, 5, 10, 25, etc.), 
+     * implementar una función greedy que determine si es posible entregar un cambio exacto utilizando una lista de monedas disponible.
+     */
     public static List<Integer> encontrarMinimoMonedas(int[] monedas, int monto) {
         if (esPosibleDarVuelto(monedas, monto)) {
             int cantidad = monto;   
@@ -37,12 +40,13 @@ public class act1_clase4 {
             return false;
         }else 
             return true;
-    }
+    }/*
+    * La complejidad temporal del metodo es O(n log n)
+    */
     public static void main(String[] args) {
         int[] monedas = {1, 5, 10, 25};
-        List<Integer> resultado = encontrarMinimoMonedas(monedas, 36);
-        List<Integer> resultado2 = encontrarMinimoMonedas(monedas, 972);
+        encontrarMinimoMonedas(monedas, 36);
+        encontrarMinimoMonedas(monedas, 972);
         System.out.println(esPosibleDarVuelto(monedas, 57));
     }
 }
-// hecho
