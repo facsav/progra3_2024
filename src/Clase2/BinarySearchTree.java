@@ -1,4 +1,5 @@
-package Clase3;
+package Clase2;
+
 
 class TreeNode {
     int value;
@@ -11,7 +12,12 @@ class TreeNode {
 }
 
 public class BinarySearchTree {
+/*Consigna:
+ * Implementa el método getHeight en la clase BinarySearchTree para calcular la
+altura de un Árbol Binario de Búsqueda utilizando la técnica de "Dividir y
+Vencerás". 
 
+ */
     // Método para buscar un valor en el BST
     public TreeNode searchBST(TreeNode root, int x) {
         // Caso base: si el nodo es nulo o si el valor del nodo es el que estamos buscando
@@ -28,13 +34,19 @@ public class BinarySearchTree {
         return searchBST(root.right, x);
     }
 
-    private static int altura(TreeNode root) {
-        if(root==null) {
+    // Método para calcular la altura de un árbol binario (Dividir y Vencerás)
+    public int getHeight(TreeNode root) {
+        // Caso base: si el árbol es nulo, la altura es -1 (árbol vacío)
+        if (root == null) {
             return -1;
-        } else {
-            return 1+ Math.max(altura(root.left),
-                    altura(root.right));
         }
+
+        // Dividir el problema: calcular la altura de los subárboles izquierdo y derecho
+        int leftHeight = getHeight(root.left);
+        int rightHeight = getHeight(root.right);
+
+        // Combinar las soluciones: la altura total es la mayor de las dos alturas más 1
+        return 1 + Math.max(leftHeight, rightHeight);
     }
 
     public static void main(String[] args) {
@@ -51,7 +63,7 @@ public class BinarySearchTree {
         root.right.right.right = new TreeNode(30);
 
         // Buscar el valor 7 en el árbol
-        int valueToSearch = 7;
+        int valueToSearch = 99;
         TreeNode result = tree.searchBST(root, valueToSearch);
 
         if (result != null) {
@@ -59,7 +71,9 @@ public class BinarySearchTree {
         } else {
             System.out.println("Valor no encontrado en el árbol.");
         }
-        System.out.println("Altura del arbole " + altura(root));
 
+        // Calcular la altura del árbol
+        int height = tree.getHeight(root);
+        System.out.println("Altura del árbol: " + height);
     }
 }

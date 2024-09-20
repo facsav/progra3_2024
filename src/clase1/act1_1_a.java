@@ -1,4 +1,4 @@
-package clase1;
+package Clase1;
 public class act1_1_a {
 /*Consigna 
 Realizar un programa en java, dado un array, calcular el máximo.

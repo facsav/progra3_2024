@@ -1,4 +1,4 @@
-package clase1;
+package Clase1;
 import java.util.Random;
 public class actividad1_3 {
     /*Consigna:
