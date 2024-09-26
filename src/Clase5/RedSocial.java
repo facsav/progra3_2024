@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 //Actividad 1
+/*Actividad Desarrolla un programa que modele un sistema de seguidores en una red social 
+utilizando un grafo representado con una lista de adyacencia. En este sistema, 
+cada usuario puede seguir a otros usuarios, y queremos almacenar y consultar 
+estas relaciones de manera eficiente.
+ * 
+ */
 public class RedSocial {
 
     // Mapa para representar la lista de adyacencia (usuario -> lista de usuarios que sigue)

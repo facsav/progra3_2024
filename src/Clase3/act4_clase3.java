@@ -3,7 +3,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-
+/*Consigna:
+ * Encontrar los "n" elementos más grandes en una lista utilizando la 
+técnica de Divide y Vencerás
+ */
 public class act4_clase3 {
     
     public static List<Integer> encontrarNElementosMasGrandes(List<Integer> numeros, int n){

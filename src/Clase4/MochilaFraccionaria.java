@@ -5,6 +5,11 @@ import java.util.Collections;
 import java.util.Arrays;
 import java.util.Comparator;
 //Actividad 3
+/*Consgina
+ *  Una empresa distribuidora necesita cargar un camión con mercancía que se 
+puede fraccionar. Indicar con una lista los elementos a subir al camión para 
+maximizar el valor total, dado que el camión tiene una capacidad limitada
+ */
 class Objeto {
     double peso;
     double valor;

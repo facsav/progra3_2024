@@ -2,7 +2,10 @@ package Clase3;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
-
+/*Consgina:
+ * Aplicar la técnica de Divide y Vencerás en una lista de clientes con id, nombre y 
+    scoring, buscando el cliente con el scoring máximo.
+ */
 public class act1_clase3 {
     public static class  Cliente {
         int id;

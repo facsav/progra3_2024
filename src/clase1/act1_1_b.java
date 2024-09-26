@@ -12,85 +12,83 @@ otra lista, con id cliente, nombre de cliente, suma importes de las facturas
 ¿ Cual es el orden de complejidad asintótica ?
  */
     public static class Factura {
-        public int idFactura; // 1
-        public int idCliente; // 1
-        public float importe; // 1
+        public int idFactura; 
+        public int idCliente; 
+        public float importe; 
 
 
         public Factura(int idFactura, int idCliente, float importe) {
-            this.idFactura = idFactura; // 1
-            this.idCliente = idCliente; // 1
-            this.importe = importe; // 1
+            this.idFactura = idFactura; 
+            this.idCliente = idCliente; 
+            this.importe = importe; 
         }
     }
 
-   
 
     public static class  Cliente {
-        public int idCliente; // 1
-        public String nombre; // 1
+        public int idCliente; 
+        public String nombre; 
         
         public Cliente(int idCliente, String nombre) {
-            this.idCliente = idCliente; // 1
-            this.nombre = nombre; // 1
+            this.idCliente = idCliente; 
+            this.nombre = nombre; 
         }
     }
 
     public static class ElementoResultado{
-        int idCliente; //1
-        String nombre; //1
-        float importeTotal; //1
+        int idCliente;
+        String nombre;
+        float importeTotal; 
 
         public ElementoResultado(int idCliente, String nombre, float importeTotal){
-            this.idCliente = idCliente; //1
-            this.nombre = nombre; //1
-            this.importeTotal = importeTotal; //1
+            this.idCliente = idCliente; 
+            this.nombre = nombre; 
+            this.importeTotal = importeTotal; 
         }
     }
 
 
     public static List<ElementoResultado> resumenClientes(List<Factura> facturas, List<Cliente> clientes){
-        List<ElementoResultado> resumen = new ArrayList<>(); //1
-        for(Cliente cliente : clientes){ // n 
+        List<ElementoResultado> resumen = new ArrayList<>(); 
+        for(Cliente cliente : clientes){
 
-            int idCliente = cliente.idCliente; // 1
-            String nombre = cliente.nombre; // 1
-            float importeTotal = 0; // 1
+            int idCliente = cliente.idCliente; 
+            String nombre = cliente.nombre; 
+            float importeTotal = 0; 
 
-            for(Factura factura : facturas){ // n
-                if (factura.idCliente == idCliente) { // n
-                    importeTotal += factura.importe; // 1
+            for(Factura factura : facturas){ 
+                if (factura.idCliente == idCliente) {
+                    importeTotal += factura.importe; 
                 }
             }
-            ElementoResultado elem = new ElementoResultado(idCliente,nombre,importeTotal); // 2
-            resumen.add(elem); // n
-        } // n* [(n*n + 1) + 2 + n + 3]
-        return resumen; // 1
+            ElementoResultado elem = new ElementoResultado(idCliente,nombre,importeTotal); 
+            resumen.add(elem); 
+        } 
+        return resumen; 
     }
 
 
     public static void main(String[] args) {
 
         // Crear 3 clientes y agregarlos a la lista
-        List<Cliente> clientes = new ArrayList<>(); // 1
-
-        clientes.add(new Cliente(1, "Juan Perez")); //2
-        clientes.add(new Cliente(2, "Nicolas Hernandez")); // 2
-        clientes.add(new Cliente(3, "Lucia Garcia")); // 2
+        List<Cliente> clientes = new ArrayList<>(); 
+        clientes.add(new Cliente(1, "Juan Perez")); 
+        clientes.add(new Cliente(2, "Nicolas Hernandez")); 
+        clientes.add(new Cliente(3, "Lucia Garcia")); 
 
         // Crear 10 facturas correspondientes a los 3 clientes
-        List<Factura> facturas = new ArrayList<>(); //1
+        List<Factura> facturas = new ArrayList<>(); 
 
-        Random randomNumbers = new Random(); //1
-        for(int i = 0; i < randomNumbers.nextInt(5,15);i++){ // 1 + 2 * (10 - 1)
-            facturas.add(new Factura(i, randomNumbers.nextInt(4), randomNumbers.nextFloat(100,50000))); // 4
-        } // 4 + 1 + 2 * (10 - 1)
-       
-        List<ElementoResultado> resultado = resumenClientes(facturas, clientes); //2
+        Random randomNumbers = new Random(); 
+        for(int i = 0; i < randomNumbers.nextInt(5,15);i++){ 
+            facturas.add(new Factura(i, randomNumbers.nextInt(4), randomNumbers.nextFloat(100,50000))); 
+        } 
+        List<ElementoResultado> resultado = resumenClientes(facturas, clientes); 
 
-        for(ElementoResultado elem : resultado){ // 4 * n
+        for(ElementoResultado elem : resultado){
             System.out.println("Id del cliente: " + elem.idCliente + "; Nombre del cliente: " + elem.nombre + "; Importe total: " +
-            elem.importeTotal); // 4
+            elem.importeTotal); 
         }
     }
 }
+// El orden de complejidad asintótica es O(n*m) donde n es la cantidad de clientes y m es la cantidad de facturas.

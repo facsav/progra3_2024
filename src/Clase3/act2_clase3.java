@@ -1,5 +1,9 @@
 package Clase3;
 import java.util.Random;
+/*Consigna:
+ *  Objetivo: Dada una lista de números, encontrar los dos números mayores 
+utilizando la técnica de Divide y Conquista.
+ */
 public class act2_clase3 {
     
     public static int[] retornar2Mayores(int[] arreglo){
