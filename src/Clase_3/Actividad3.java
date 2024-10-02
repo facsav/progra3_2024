@@ -1,4 +1,4 @@
-package Clase3;
+package Clase_3;
 
 public class Actividad3 {
 
