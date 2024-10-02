@@ -1,4 +1,4 @@
-package clase6;
+package Clase6;
 //Actividad 1
 public class Mochila {
     public static void main(String[] args) {

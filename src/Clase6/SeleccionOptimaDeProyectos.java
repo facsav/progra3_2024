@@ -1,4 +1,4 @@
-package clase6;
+package Clase6;
 //Actividad 3
 public class SeleccionOptimaDeProyectos {
     public static void main(String[] args) {

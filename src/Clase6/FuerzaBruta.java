@@ -1,4 +1,4 @@
-package clase6;
+package Clase6;
 //Actividad 2
 public class FuerzaBruta {
     public static void main(String[] args) {

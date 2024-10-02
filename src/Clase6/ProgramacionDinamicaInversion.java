@@ -1,4 +1,4 @@
-package clase6;
+package Clase6;
 //Actividad 4
 public class ProgramacionDinamicaInversion {
     public static void main(String[] args) {
